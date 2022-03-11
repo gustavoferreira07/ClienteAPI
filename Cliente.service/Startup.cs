@@ -51,6 +51,13 @@ namespace Cliente.service
 
             app.UseRouting();
 
+            app.UseCors(options =>
+            {
+                options.WithOrigins("http://localhost:3000");
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+            });
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -60,7 +67,6 @@ namespace Cliente.service
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.RoutePrefix= string.Empty;
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Clientes API V1");
             });
         }
