@@ -38,6 +38,7 @@ namespace ClienteService.Data.Repository
         void IRepository<Cliente>.Update(Cliente obj)
         {
             _context.Update(obj);
+            _context.SaveChanges();
         }
     }
 }
